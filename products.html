@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpressWear - Custom T-Shirt Sale | Products</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="products-container">
+        <header>
+            <div class="logo-header">
+                <i class="fas fa-tshirt"></i> ExpressWear
+            </div>
+            <div class="nav-links">
+                <a href="products.html" class="active">Shop</a>
+                <a href="customize.html">Customize</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart fa-lg"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </header>
+        
+        <div class="hero-banner">
+            <h1>Custom T-Shirts for Every Occasion</h1>
+            <p>Premium quality, unique designs, and perfect fit - all at incredible prices!</p>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-options">
+                <div class="filter-option active">All</div>
+                <div class="filter-option">Men</div>
+                <div class="filter-option">Women</div>
+                <div class="filter-option">Kids</div>
+                <div class="filter-option">New Arrivals</div>
+                <div class="filter-option">Sale</div>
+            </div>
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search t-shirts...">
+            </div>
+        </div>
+        
+        <div class="products-grid" id="products-grid">
+            <!-- Products will be loaded here via JavaScript -->
+        </div>
+        
+        <div class="checkout-section">
+            <button class="btn-outline" id="cancel-btn">Cancel</button>
+            <button class="btn-outline" id="exit-btn">Exit</button>
+            <button class="btn-primary" id="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script src="products.js"></script>
+</body>
+<footer>
+    <p>&copy; 2025 ExpressWear - Custom T-Shirt . All rights reserved.</p>
+</footer>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpressWear - Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="contact-container">
+        <header>
+            <div class="logo-header">
+                <i class="fas fa-tshirt"></i> ExpressWear
+            </div>
+            <div class="nav-links">
+                <a href="products.html">Shop</a>
+                <a href="customize.html">Customize</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart fa-lg"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </header>
+        
+        <div class="contact-banner">
+            <h1>Contact Us</h1>
+            <p>We'd love to hear from you! Feel free to reach out with any questions or feedback.</p>
+        </div>
+        
+        <div class="contact-form">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="contact-name">Name</label>
+                    <input type="text" id="contact-name" name="contact-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Email</label>
+                    <input type="email" id="contact-email" name="contact-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Message</label>
+                    <textarea id="contact-message" name="contact-message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="contact.js"></script>
+</body>
+<footer>
+    <p>&copy; 2025 ExpressWear - Custom T-Shirt . All rights reserved.</p>
+</footer>
+
+</html>

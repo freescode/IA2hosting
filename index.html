@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpressWear - Custom T-Shirt Sale | Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <div class="login-content">
+                <div class="logo">
+                    <i class="fas fa-tshirt"></i> ExpressWear
+                </div>
+                <h1>Welcome Back!</h1>
+                <p>Sign in to access exclusive designs and limited-time offers.</p>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-truck"></i>
+                        <span>Fast Shipping</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-medal"></i>
+                        <span>Premium Quality</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-undo"></i>
+                        <span>Easy Returns</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="login-right">
+            <div class="login-form-container">
+                <h2>Sign In</h2>
+                <div id="login-error" class="error-message"></div>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                        <small>Password must be at least 8 characters long</small>
+                    </div>
+                    <div class="form-group remember">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Remember me</label>
+                    </div>
+                    <button type="submit" class="btn-primary">Sign In</button>
+                </form>
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="sign-up.html">Sign Up</a></p>
+                    <p><a href="forgot-password.html">Forgot Password?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+<footer>
+    <p>&copy; 2025 ExpressWear - Custom T-Shirt . All rights reserved.</p>
+</footer>
+
+</html>

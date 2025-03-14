@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpressWear - Custom T-Shirt Sale | Invoice</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="invoice-container">
+        <div class="invoice-header">
+            <div class="invoice-logo">
+                <i class="fas fa-tshirt"></i> ExpressWear
+            </div>
+            <div class="invoice-info">
+                <div class="invoice-id" id="invoice-id">Invoice #INV-2025-0001</div>
+                <div class="invoice-date" id="invoice-date">Date: March 14, 2025</div>
+            </div>
+        </div>
+        
+        <div class="invoice-addresses">
+            <div class="address-block">
+                <h3>From:</h3>
+                <p>ExpressWear Custom T-Shirts</p>
+                <p>79 Fashion Avenue</p>
+                <p>Kingston 10, Jamaica</p>
+                <p>2306913@utech.edu.jm</p>
+                <p>+1 (876) 575-1234</p>
+            </div>
+            <div class="address-block">
+                <h3>To:</h3>
+                <p>Customer Name</p>
+                <p>456 Client Street</p>
+                <p>Montego Bay, Jamaica</p>
+                <p>customer@example.com</p>
+            </div>
+        </div>
+        
+        <div class="invoice-items">
+            <table class="invoice-table" id="invoice-items-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="invoice-items-body">
+                    <!-- Items will be added dynamically via JavaScript -->
+                </tbody>
+            </table>
+            
+            <div class="invoice-totals" id="invoice-totals">
+                <!-- Totals will be added dynamically via JavaScript -->
+            </div>
+        </div>
+        
+        <div class="invoice-notes">
+            <h3>Notes</h3>
+            <p>Thank you for your purchase! All custom t-shirts come with a 30-day satisfaction guarantee. If you are not completely satisfied with your purchase, please contact our customer service team.</p>
+        </div>
+        
+        <div class="invoice-actions">
+            <button class="btn-outline" id="cancel-btn">Cancel</button>
+            <button class="btn-outline" id="exit-btn">Exit</button>
+            <button class="btn-primary" id="print-btn">Print Invoice</button>
+        </div>
+    </div>
+
+    <script src="invoice.js"></script>
+</body>
+<footer>
+    <p>&copy; 2025 ExpressWear - Custom T-Shirt . All rights reserved.</p>
+</footer>
+
+</html>

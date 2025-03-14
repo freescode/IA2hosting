@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpressWear - Customize Your T-Shirt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="customize-container">
+        <header>
+            <div class="logo-header">
+                <i class="fas fa-tshirt"></i> ExpressWear
+            </div>
+            <div class="nav-links">
+                <a href="products.html">Shop</a>
+                <a href="customize.html" class="active">Customize</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart fa-lg"></i>
+                <span class="cart-count" id="cart-count">0</span>
+            </div>
+        </header>
+        
+        <div class="customize-banner">
+            <h1>Design Your Own T-Shirt</h1>
+            <p>Choose your style, colors, and add your own text or images to create a unique T-shirt!</p>
+        </div>
+        
+        <div class="customize-form">
+            <form id="customize-form">
+                <div class="form-group">
+                    <label for="shirt-style">T-Shirt Style</label>
+                    <select id="shirt-style" name="shirt-style" required>
+                        <option value="men">Men</option>
+                        <option value="women">Women</option>
+                        <option value="kids">Kids</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="shirt-color">T-Shirt Color</label>
+                    <input type="color" id="shirt-color" name="shirt-color" required>
+                </div>
+                <div class="form-group">
+                    <label for="shirt-text">Text</label>
+                    <input type="text" id="shirt-text" name="shirt-text" placeholder="Your custom text">
+                </div>
+                <div class="form-group">
+                    <label for="shirt-image">Upload Image</label>
+                    <input type="file" id="shirt-image" name="shirt-image" accept="image/*">
+                </div>
+                <div>
+                    <p><strong> Please note that for customization to any t-shirt will cost 250 USD up front unless otherwise stated</strong></p>
+                </div>
+                <button type="submit" class="btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="customize.js"></script>
+</body>
+<footer>
+    <p>&copy; 2025 ExpressWear - Custom T-Shirt . All rights reserved.</p>
+</footer>
+
+</html>
