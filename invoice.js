@@ -1,3 +1,4 @@
+
 // DOM elements
 const invoiceId = document.getElementById("invoice-id");
 const invoiceDate = document.getElementById("invoice-date");
@@ -7,17 +8,15 @@ const cancelBtn = document.getElementById("cancel-btn");
 const exitBtn = document.getElementById("exit-btn");
 const printBtn = document.getElementById("print-btn");
 
-// Tax rate and discount
+// Tax rate
 const TAX_RATE = 0.15; // 15% tax
-const DISCOUNT_THRESHOLD = 100; // Orders over $100 get a discount
-const DISCOUNT_RATE = 0.10; // 10% discount
+const CUSTOMIZED_TSHIRT_PRICE = 250; // Fixed price for customized T-shirts
 
 // Load invoice when page loads
 document.addEventListener("DOMContentLoaded", function() {
-// Get customer and cart items from localStorage
-const customer = JSON.parse(localStorage.getItem("customer")) || {};
-const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-console.log("Retrieved customer details:", customer); // Add this line to verify
+    // Get customer and cart items from localStorage
+    const customer = JSON.parse(localStorage.getItem("customer")) || {};
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
     // Generate random invoice number
     const invoiceNumber = generateInvoiceNumber();
@@ -68,7 +67,7 @@ function displayCustomerInfo(customer) {
 // Display invoice items
 function displayInvoiceItems(items) {
     invoiceItemsBody.innerHTML = "";
-    
+
     if (items.length === 0) {
         invoiceItemsBody.innerHTML = `
             <tr>
@@ -77,19 +76,34 @@ function displayInvoiceItems(items) {
         `;
         return;
     }
-    
+
     items.forEach(item => {
         const row = document.createElement("tr");
-        const itemTotal = item.price * item.quantity;
-        
-        row.innerHTML = `
-            <td><img src="${item.image}" alt="${item.name}" class="item-image"></td>
-            <td>${item.name}</td>
-            <td>${item.quantity}</td>
-            <td>$${item.price.toFixed(2)}</td>
-            <td>$${itemTotal.toFixed(2)}</td>
-        `;
-        
+        let itemTotal, unitPrice;
+
+        // Check if the item is a customized T-shirt or a regular product
+        if (item.customized) {
+            unitPrice = CUSTOMIZED_TSHIRT_PRICE; // Fixed price for customized T-shirts
+            itemTotal = unitPrice; // No quantity required for customized T-shirts
+            row.innerHTML = `
+                <td>${item.image ? `<img src="${item.image}" alt="T-Shirt Image" class="item-image">` : 'No Image'}</td>
+                <td>Customized T-Shirt: Style: ${item.style}, Color: ${item.color}, Text: ${item.text}</td>
+                <td>1</td>
+                <td>$${unitPrice.toFixed(2)}</td>
+                <td>$${itemTotal.toFixed(2)}</td>
+            `;
+        } else {
+            unitPrice = item.price || 0; // Use price from the product listing
+            itemTotal = unitPrice * (item.quantity || 1); // Multiply by quantity
+            row.innerHTML = `
+                <td>${item.image ? `<img src="${item.image}" alt="Product Image" class="item-image">` : 'No Image'}</td>
+                <td>${item.name || "Unnamed Item"}</td>
+                <td>${item.quantity || 1}</td>
+                <td>$${unitPrice.toFixed(2)}</td>
+                <td>$${itemTotal.toFixed(2)}</td>
+            `;
+        }
+
         invoiceItemsBody.appendChild(row);
     });
 }
@@ -97,20 +111,21 @@ function displayInvoiceItems(items) {
 // Calculate and display totals
 function calculateTotals(items) {
     // Calculate subtotal
-    const subtotal = items.reduce((total, item) => total + (item.price * item.quantity), 0);
-    
-    // Calculate discount if applicable
-    let discount = 0;
-    if (subtotal >= DISCOUNT_THRESHOLD) {
-        discount = subtotal * DISCOUNT_RATE;
-    }
+    const subtotal = items.reduce((total, item) => {
+        if (item.customized) {
+            return total + CUSTOMIZED_TSHIRT_PRICE; // Add fixed price for customized T-shirts
+        } else {
+            const unitPrice = item.price || 0;
+            const quantity = item.quantity || 1;
+            return total + (unitPrice * quantity); // Add price * quantity for regular items
+        }
+    }, 0);
     
     // Calculate tax
-    const taxableAmount = subtotal - discount;
-    const tax = taxableAmount * TAX_RATE;
+    const tax = subtotal * TAX_RATE;
     
     // Calculate total
-    const total = taxableAmount + tax;
+    const total = subtotal + tax;
     
     // Display totals
     invoiceTotals.innerHTML = `
@@ -118,12 +133,6 @@ function calculateTotals(items) {
             <span>Subtotal:</span>
             <span>$${subtotal.toFixed(2)}</span>
         </div>
-        ${discount > 0 ? `
-            <div class="total-row">
-                <span>Discount (10%):</span>
-                <span>-$${discount.toFixed(2)}</span>
-            </div>
-        ` : ''}
         <div class="total-row">
             <span>Tax (15%):</span>
             <span>$${tax.toFixed(2)}</span>
@@ -133,14 +142,6 @@ function calculateTotals(items) {
             <span>$${total.toFixed(2)}</span>
         </div>
     `;
-    
-    // Store calculated values for potential use
-    window.invoiceData = {
-        subtotal: subtotal,
-        discount: discount,
-        tax: tax,
-        total: total
-    };
 }
 
 // Setup event listeners
@@ -166,4 +167,3 @@ function setupEventListeners() {
         window.print();
     });
 }
-
